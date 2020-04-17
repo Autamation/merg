@@ -1,0 +1,92 @@
+<div class="container">
+    <div class="title text-center">
+        <h2>Test your website</h2>
+    </div>
+    <div class="content" *ngIf="!loadingStatus">
+        <mat-tab-group>
+            <mat-tab label="Test a page">
+                <form [formGroup]="singleUrlForm" (ngSubmit)="singleUrlSubmit()" class="pd-tp-10">
+                    <div class="card mg-tp-20">
+                        <div class="card-header">
+                          Test a Page
+                        </div>
+                        <div class="card-body">
+                          <h3 class="card-title">Please enter the URL of webpage that needs to be tested, then click on Test page button given below.</h3>
+                          <div class="col">
+                            <mat-form-field class="full-width">
+                                <mat-label>URL</mat-label>
+                                <input matInput type="url" formControlName="url" required />
+                                <mat-error>URL is Required</mat-error>
+                            </mat-form-field>
+                            </div>
+                            <input hidden formControlName="email" [value] ="loggedinUser$.value['email']"/>
+                            <div class="col mg-bt-10">
+                                <button mat-raised-button color="warn" type="submit" [disabled]="!singleUrlForm.valid">Test Page</button>
+                            </div>
+                        </div>
+                      </div>
+
+                    <div class="col description">
+                        <p></p>
+                    </div>
+                </form>
+            </mat-tab>
+            <mat-tab label="Test multiple pages">
+                <form [formGroup]="multiUrlForm" (ngSubmit)="multiUrlSubmit()" class="pd-tp-10">
+                    <div class="card mg-tp-20">
+                        <div class="card-header">
+                          Test Multiple Pages
+                          <div class="float-right" *ngIf="loggedinUser$.value['userTypeCode']  === 'f'">
+                            <span class="badge badge-danger">Pro Feature</span>
+                          </div>
+                        </div>
+                        <div class="card-body" *ngIf="loggedinUser$.value['userTypeCode']  === 'f'">
+                            <div class="alert alert-danger" role="alert">
+                                Upgrade to Individual/Business Account to use this feature.
+                              </div>
+                        </div>
+                        <div class="card-body" *ngIf="loggedinUser$.value['userTypeCode'] === 'i' || loggedinUser$.value['userTypeCode'] === 'b'">
+                          <h3 class="card-title">Please select a XLSX file which has all the URL's that needs to be tested, then click on Test pages button given below.</h3>
+                            <div class="col mg-tp-10">
+                                <button type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>
+                                <label class="mg-lt-10"> {{path}} </label>
+                                <input hidden (change)="onFileSelected()" #fileInput type="file" id="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+                            </div>
+                            <div class="col mg-tp-10 mg-bt-10">
+                                <button mat-raised-button color="warn" type="submit" [disabled]="!path">Test Pages</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col description">
+                        <p></p>
+                    </div>
+
+                </form>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+
+    <div class="error-content">
+        <div *ngIf="error && error.networkStatus" class="alert alert-danger" role="alert">
+            Network status if offline. Could not complete the request.
+          </div>
+        <div *ngIf="error && error.errorCode500" class="alert alert-danger" role="alert">
+            500 - Internal Server error occured. Could not complete the request.
+        </div>
+        <div *ngIf="error && error.unknownError" class="alert alert-danger" role="alert">
+            Technical error occured. Could not complete the request.
+        </div>
+    </div>
+
+    <div *ngIf="loadingStatus" class="container-sm" style="max-width: 500px;">
+        <div class="d-flex align-items-center" style="font-weight: bold;padding-top: 100px;">
+            <strong>Fetching accessibility test results, Please wait...</strong>
+            <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+        </div>
+
+        <div class="progress mg-tp-10">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" [style.width]="capacity + '%'"> {{capacity+'%'}} </div>
+        </div>
+    </div>
+</div>

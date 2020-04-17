@@ -1,0 +1,53 @@
+<div class="container-sm" style="max-width: 500px;">
+    <div class="title text-center">
+      <h2 style="font-weight: bold;" >Confirm Plan Change</h2>
+    </div>
+    <div *ngIf="!loadingStatus" class="content">
+        <form [formGroup]="planConfirmForm" (ngSubmit)="changePlan()">
+  
+          <mat-form-field class="full-width">
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="name" type="text" readonly/>
+          </mat-form-field>
+      
+            <mat-form-field class="full-width">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" type="text" readonly/>
+            </mat-form-field>
+        
+            <mat-form-field class="full-width">
+              <mat-label>Current Plan</mat-label>
+              <input matInput formControlName="currentPlan" type="text" readonly />
+            </mat-form-field>
+      
+            <mat-form-field class="full-width">
+              <mat-label>New Plan</mat-label>
+              <input matInput formControlName="newPlan" type="text" readonly />
+            </mat-form-field>
+            <div class="row">
+                <div class="col">
+                    <button mat-raised-button color="warn" type="submit" class="mg-rt-20" routerLink="/plans">View Plans</button>
+                </div>
+              <div class="text-right col">
+                    <button mat-raised-button color="primary" type="submit" >Confirm Plan</button>
+              </div>           
+            </div>
+            <div class="mg-tp-20">
+                <div *ngIf="error && error.networkStatus" class="alert alert-danger" role="alert">
+                  Network error occured. Could not complete the request.
+                </div>
+                <div *ngIf="error && error.errorCode500" class="alert alert-danger" role="alert">
+                    500 - Internal Server error occured. Could not complete the request.
+                </div>
+                <div *ngIf="error && error.unknownError" class="alert alert-danger" role="alert">
+                    Technical error occured. Could not complete the request.
+                </div>
+              </div>
+          </form>
+      </div>
+
+      <div *ngIf="loadingStatus" class="d-flex align-items-center" style="font-weight: bold;padding-top: 100px;">
+        <strong>Updating new Plan, Please wait...</strong>
+        <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+      </div>
+</div>

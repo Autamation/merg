@@ -1,0 +1,87 @@
+<div class="container-sm" style="max-width: 500px;">
+    <div class="title text-center">
+      <h2 style="font-weight: bold;" >eQuality account signup</h2>
+    </div>
+    <div *ngIf="!loadingStatus" class="content">
+      <form [formGroup]="signupForm" (ngSubmit)="registerUser()">
+
+        <mat-form-field class="full-width">
+          <mat-label>Account Type</mat-label>
+          <input matInput formControlName="userType" type="text" readonly/>
+      </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" type="text" required/>
+            <mat-error *ngIf="isError(name) && name.errors.required">Name is required</mat-error>
+            <mat-error *ngIf="isError(name) && name.errors.minlength">Name should be atleast 4 characters</mat-error>
+            <mat-error *ngIf="isError(name) && name.errors.maxlength">Name should be maximum of 20 characters</mat-error>
+        </mat-form-field>
+    
+          <mat-form-field class="full-width">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" type="email" required/>
+            <!-- <mat-hint align="end">Provide active email, used for verification</mat-hint> -->
+            <mat-error *ngIf="isError(email) && email.errors.required">Email is required</mat-error>
+            <mat-error *ngIf="isError(email) && email.errors.email">Email is not valid</mat-error>
+            <mat-error *ngIf="isError(email) && email.errors.emailRegistered">Email is already registered</mat-error>
+            <mat-error *ngIf="isError(email) && email.errors.networkStatus">Email not validated, network error occured.</mat-error>
+          </mat-form-field>
+      
+          <mat-form-field class="full-width">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password" required />
+            <mat-error *ngIf="isError(password) && password.errors.required">Password is required</mat-error>
+            <mat-error *ngIf="isError(password) && password.errors.minlength">Password should be atleast 6 characters</mat-error>
+            <mat-error *ngIf="isError(password) && password.errors.maxlength">Password should be maximum of 20 characters</mat-error>
+          </mat-form-field>
+    
+          <mat-form-field class="full-width">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput type="password" formControlName="passwordConfirm" required />
+            <mat-error *ngIf="isError(passwordConfirm) && passwordConfirm.errors.required">Confirm Password is required</mat-error>
+            <mat-error *ngIf="isError(passwordConfirm) && passwordConfirm.errors.minlength">Confirm Password should be atleast 6 characters</mat-error>
+            <mat-error *ngIf="isError(passwordConfirm) && passwordConfirm.errors.maxlength">Confirm Password should be maximum of 20 characters</mat-error>
+          </mat-form-field>
+            <mat-error *ngIf="!isError(password) && !isError(passwordConfirm) && signupForm.errors && signupForm.errors.passwordDoesNotMatch">Password and Confirm password does not match</mat-error>
+            <mat-error *ngIf="signupForm.errors && signupForm.errors.networkStatus">Signup not Complete, Your network status is offline</mat-error>
+            <mat-error *ngIf="signupForm.errors && signupForm.errors.unknownError">Unknow error occured, Signup Failed</mat-error>
+          <div class="row">
+            <div class="text-right col">
+                <button mat-raised-button color="primary" type="submit" [disabled]="!signupForm.valid" >Create account</button>
+            </div>           
+          </div>
+    
+          <div class="mg-tp-20">
+            <div *ngIf="error && error.networkStatus" class="alert alert-danger" role="alert">
+              Network error occured. Could not complete the request.
+            </div>
+            <div *ngIf="error && error.errorCode500" class="alert alert-danger" role="alert">
+                500 - Internal Server error occured. Could not complete the request.
+            </div>
+            <div *ngIf="error && error.unknownError" class="alert alert-danger" role="alert">
+                Technical error occured. Could not complete the request.
+            </div>
+          </div>
+    
+        </form>
+        <div class="title text-center">
+          <h2 style="font-weight: bold;">Already have an eQuality account</h2>
+      </div>
+      <div class="text-center mg-bt-10">
+          <button mat-raised-button color="warn" routerLink="/login" routerLinkActive="active">Login</button>
+      </div>
+    </div>
+
+    <div *ngIf="loadingStatus && !signupStatus" class="d-flex align-items-center" style="font-weight: bold;padding-top: 100px;">
+      <strong>Signup in process, Please wait...</strong>
+      <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+    </div>
+
+    <div *ngIf="signupStatus" class="d-flex align-items-center" style="padding-top: 100px;">
+      <div *ngIf="signupStatus" class="alert alert-success" role="alert">
+        <strong>Signup Success. </strong> Redirecting to login page in {{redirectTime }} sec.
+        <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>

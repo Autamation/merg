@@ -1,0 +1,25 @@
+footer {
+    min-height: 60px;
+    background-color : #101315;
+    color: white;
+    margin-top: -60px;
+}
+
+.footer-row{
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: 15px;
+}
+ul {
+    display: inline-block;
+    margin-bottom: 0;
+}
+ ul li {
+     list-style: none;
+     float: left;
+     padding-left: 20px;
+ }
+
+ .footer-div{
+     text-align: center;
+ }

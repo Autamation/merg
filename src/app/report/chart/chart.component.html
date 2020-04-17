@@ -1,0 +1,114 @@
+<div class="container">
+    <div class="title text-center">
+        <h2 style="font-weight: bold;" >Accessibility Test Report</h2>
+      </div>
+    <div class="content">
+        <button type="button" routerLink="/report" class="btn btn-sm btn-warning">Back</button>
+    </div>
+    <div class="row">
+        <div class="col mg-bt-20">
+            <canvas baseChart
+            [data]="pieChartData"
+            [labels]="pieChartLabels"
+            [chartType]="pieChartType"
+            [colors] = "[{'backgroundColor' : ['rgb(211,33,45)','rgb(0,66,37)']}]">
+            </canvas>
+        </div>
+        <div class="col">
+            <div class="row mg-bt-20">
+                <div class="col mg-bt-20">
+
+                    <div class="input-group mg-bt-10">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text title-label">Total Issues</div>
+                        </div>
+                        <input type="text" class="form-control value-label" [value]="summaryData['totalIssues']" disabled style="background:aliceblue;"/>
+                    </div>
+
+                    <div class="input-group  mg-bt-10">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text title-label">Total Errors</div>
+                        </div>
+                        <input type="text" class="form-control value-label" [value]="summaryData['totalErrors']" disabled style="background:aliceblue;"/>
+                    </div>
+
+                    <div class="input-group  mg-bt-10">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text title-label">Total Warnings</div>
+                        </div>
+                        <input type="text" class="form-control value-label" [value]="summaryData['totalWarnings']" disabled style="background:aliceblue;"/>
+                    </div>
+
+                    <div class="input-group  mg-bt-10">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text title-label">Total Tests</div>
+                        </div>
+                        <input type="text" class="form-control value-label" [value]="summaryData['totalNoOfTests']" disabled style="background: aliceblue;"/>
+                    </div>
+
+                    <div class="input-group mg-bt-10">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text title-label">Failed Tests</div>
+                        </div>
+                        <input type="text" class="form-control value-label" [value]="summaryData['failedTests']" disabled style="background:aliceblue;"/>
+                    </div>
+
+                    <div class="input-group  mg-bt-10">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text title-label">Passed Tests</div>
+                        </div>
+                        <input type="text" class="form-control value-label" [value]="summaryData['passedTests']" disabled style="background:aliceblue;"/>
+                    </div>
+
+                </div>
+
+
+                <div class="col mg-bt-20">
+
+                    <div class="input-group mg-bt-10">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text title-label">Count by Level A</div>
+                        </div>
+                        <input type="text" class="form-control value-label" [value]="summaryData['countBylevelA']" disabled style="background:aliceblue;"/>
+                    </div>
+
+                    <div class="input-group  mg-bt-10">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text title-label">Count by Level AA</div>
+                        </div>
+                        <input type="text" class="form-control value-label" [value]="summaryData['countBylevelAA']" disabled style="background:aliceblue;"/>
+                    </div>
+
+                    <div class="input-group  mg-bt-10">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text title-label">Count by Level AAA</div>
+                        </div>
+                        <input type="text" class="form-control value-label" [value]="summaryData['countBylevelAAA']" disabled style="background: aliceblue;"/>
+                    </div>
+
+                    <div class="input-group mg-bt-10">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text title-label">% by Level A</div>
+                        </div>
+                        <input type="text" class="form-control value-label" [value]="summaryData['pctBylevelA']" disabled style="background:aliceblue;"/>
+                    </div>
+
+                    <div class="input-group  mg-bt-10">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text title-label">% by Level AA</div>
+                        </div>
+                        <input type="text" class="form-control value-label" [value]="summaryData['pctBylevelAA']" disabled style="background: aliceblue;"/>
+                    </div>
+
+                    <div class="input-group  mg-bt-10">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text title-label">% by Level AAA</div>
+                        </div>
+                        <input type="text" class="form-control title-label" [value]="summaryData['pctBylevelAAA']" disabled style="background: aliceblue;"/>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="title text-center">
+        <h2>Proud to be Inclusive? Put an eQuality TrustMark on your website.</h2>
+        <p>eQuality certification for your website increases the trust of the people with disabilities. The internet is very important in our daily lives, including the lives of people with visual,auditory,motor,neuro or other disabilities. They too check the news, weather, sports, social networks, do banking transaction, buy products or make travel plans just like all other people. Not every website, however is designed for use by people with disabilities.
+        The eQuality website trustmark program helps you become and remain compliant with the common standards for accessibility websites.</p>
+    </div>
+    <div class="d-flex justify-content-center">
+        <div class="row">
+            <div class="col" style="min-width: 350px;">
+                <div class="card text-white bg-primary mb-4" >
+                    <div class="card-header"><strong>Free Account</strong>
+                        <div class="float-right">$0/year</div>
+                    </div>
+                    <div class="card-body">
+                      <ul class="list-group">
+                          <li class="list-group-item list-group-item-primary">Test upto 6 pages(URL's)</li>
+                          <li class="list-group-item list-group-item-primary">Testing is automated</li>
+                          <li class="list-group-item list-group-item-primary">WCAG A compliance(Partial)</li>
+                          <li class="list-group-item list-group-item-primary">Detailed report in excel format</li>
+                          <li class="list-group-item list-group-item-primary">Pages scanned every 3 months</li>
+                          <li class="list-group-item list-group-item-primary">Free Level 0 eQuality TrustMark</li>
+                      </ul>
+                      <div class="text-center">
+                        <button *ngIf="!signedin$.value" type="button" class="btn btn-light mg-tp-10" [routerLink]="['/signup','f']">Choose Plan</button>
+                        <button *ngIf="signedin$.value && loggedinUser$.value['userTypeCode'] === 'f'" type="button" class="btn btn-secondary mg-tp-10 current-plan">Current Plan</button>
+                        <button *ngIf="signedin$.value && loggedinUser$.value['userTypeCode'] != 'f'" type="button" class="btn btn-light mg-tp-10" [routerLink]="['/planconfirm','f']">Change Plan</button>
+                      </div>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="col" style="min-width: 350px;">
+                <div class="card text-white bg-success mb-4">
+                    <div class="card-header"><strong>For Individuals</strong>
+                        <div class="float-right">$100/year</div>
+                    </div>
+                    <div class="card-body">
+                      <ul class="list-group">
+                            <li class="list-group-item list-group-item-success">Test upto 25 pages(URL's)</li>
+                            <li class="list-group-item list-group-item-success">Testing is automated + Manual</li>
+                            <li class="list-group-item list-group-item-success">WCAG AA compliance</li>
+                            <li class="list-group-item list-group-item-success">Detailed report in excel format</li>
+                            <li class="list-group-item list-group-item-success">Pages scanned every 3 months</li>
+                            <li class="list-group-item list-group-item-success">Free Level 1 eQuality TrustMark</li>
+                        </ul>
+                        <div class="text-center">
+                            <button *ngIf="!signedin$.value" type="button" class="btn btn-light mg-tp-10" [routerLink]="['/signup','i']">Choose Plan</button>
+                            <button *ngIf="signedin$.value && loggedinUser$.value['userTypeCode'] === 'i'" type="button" class="btn btn-secondary mg-tp-10 current-plan">Current Plan</button>
+                            <button *ngIf="signedin$.value && loggedinUser$.value['userTypeCode'] != 'i'" type="button" class="btn btn-light mg-tp-10" [routerLink]="['/planconfirm','i']">Change Plan</button>
+                        </div>
+                      
+                    </div>
+                  </div>
+            </div>
+            <div class="col" style="min-width: 350px;">
+                <div class="card text-white bg-danger mb-4">
+                    <div class="card-header"><strong>For Business</strong>
+                        <div class="float-right">$250/year</div>
+                    </div>
+                    <div class="card-body">
+                      <ul class="list-group">
+                            <li class="list-group-item list-group-item-danger">Test upto 50 pages(URL's)</li>
+                            <li class="list-group-item list-group-item-danger">Testing is automated + Manual</li>
+                            <li class="list-group-item list-group-item-danger">WCAG AA compliance</li>
+                            <li class="list-group-item list-group-item-danger">Detailed report in excel format</li>
+                            <li class="list-group-item list-group-item-danger">Pages scanned every month</li>
+                            <li class="list-group-item list-group-item-danger">Free Level 2 eQuality TrustMark</li>
+                        </ul>
+                        <div class="text-center">
+                            <button *ngIf="!signedin$.value" type="button" class="btn btn-light mg-tp-10" [routerLink]="['/signup','b']">Choose Plan</button>
+                            <button *ngIf="signedin$.value && loggedinUser$.value['userTypeCode'] === 'b'" type="button" class="btn btn-secondary mg-tp-10 current-plan">Current Plan</button>
+                            <button *ngIf="signedin$.value && loggedinUser$.value['userTypeCode'] != 'b'" type="button" class="btn btn-light mg-tp-10" [routerLink]="['/planconfirm','b']">Change Plan</button>
+                        </div>
+                    </div>
+                  </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
