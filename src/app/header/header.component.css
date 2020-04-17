@@ -1,0 +1,18 @@
+.blue-color {
+  /*background-color: #3b5998;*/
+  background-color: #002265;
+}
+
+img:focus {
+  outline: none;
+}
+
+.nav-link {
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.pd-rt-75 {
+  padding-right: 75px;
+}

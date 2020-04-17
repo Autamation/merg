@@ -1,0 +1,58 @@
+<div class="container-sm" style="max-width: 500px;">
+  <div class="title text-center">
+    <h2>eQuality account login</h2>
+  </div>
+  <div class="content" *ngIf="!loadingStatus">
+    <form [formGroup]="loginForm" (ngSubmit) = "dologin()">
+      <mat-form-field class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" required />
+        <mat-error *ngIf="isError(email) && email.errors?.email">Enter a valid email.</mat-error>
+        <mat-error *ngIf="isError(email) && email.errors?.required">Email is required.</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" required/>
+        <mat-error *ngIf="isError(password) && password.errors?.required">Password is required</mat-error>
+        <mat-error *ngIf="isError(password) && password.errors?.minlength">Password length should be atleast 6 Characters</mat-error>
+      </mat-form-field>
+  
+      <div class="row">
+        <div class="text-left col">
+          <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid" >Login</button>
+        </div> 
+        <div class="text-right col">
+            <button type="button" mat-stroked-button color="primary" routerLink="/passwordreset">Forget you password?</button>
+        </div>           
+      </div>
+      <div class="mg-tp-20">
+        <div *ngIf="error && error.networkStatus" class="alert alert-danger" role="alert">
+          Network error occured. Could not complete the request.
+        </div>
+        <div *ngIf="error && error.errorCode500" class="alert alert-danger" role="alert">
+            500 - Internal Server error occured. Could not complete the request.
+        </div>
+        <div *ngIf="error && error.unknownError" class="alert alert-danger" role="alert">
+            Technical error occured. Could not complete the request.
+        </div>
+        <div *ngIf="error && error.invalidCredential" class="alert alert-danger" role="alert">
+          Invalid Credentials. Please try with valid credentials.
+      </div>
+        
+      </div>
+    </form>
+  
+        <div class="title text-center">
+          <h2 style="font-weight: bold;">Dont have an eQuality account</h2>
+      </div>
+      <div class="text-center mg-bt-10">
+          <button mat-raised-button color="warn" routerLink="/signup" routerLinkActive="active">Create Account</button>
+      </div>
+  </div>
+
+  <div *ngIf="loadingStatus" class="d-flex align-items-center" style="font-weight: bold;padding-top: 100px;">
+    <strong>Signing you in, Please wait...</strong>
+    <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+  </div>
+</div>

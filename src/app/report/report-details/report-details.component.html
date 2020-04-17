@@ -1,0 +1,39 @@
+<div class="mg-tp-10 mg-bt-10 mg-lt-10 text-left">
+    <button (click)="goback()" type="button" class="btn btn-warning">Back</button>
+</div>
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">NO</th>
+                <th scope="col">URL</th>
+                <th scope="col">Total Issues</th>
+                <th scope="col">Total Errors</th>
+                <th scope="col">Total Warnings</th>
+                <th scope="col">Total number of Tests</th>
+                <th scope="col">Failed Criterion</th>
+                <th scope="col">Passed Criterion</th>
+                <th scope="col">Issues by Level A</th>
+                <th scope="col">Issues by Level AA</th>
+                <th scope="col">Issues by Level AAA</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let response of response$.value['testDetails'];let i = index">
+                <ng-container *ngIf="response.statusCode === 200">
+                    <th scope="row"> {{i+1}} </th>
+                    <th> {{response.url}} </th>
+                    <td> {{response.totalIssues}} </td>
+                    <td> {{response.totalErrors}} </td>
+                    <td> {{response.totalWarnings}} </td>
+                    <td> {{response.totalNoOfTests}} </td>
+                    <td> {{response.failedTests}} </td>
+                    <td> {{response.passedTests}} </td>
+                    <td> {{response.countBylevelA}} </td>
+                    <td> {{response.countBylevelAA}} </td>
+                    <td> {{response.countBylevelAAA}} </td>
+                </ng-container>
+            </tr>
+        </tbody>
+    </table>    
+</div>

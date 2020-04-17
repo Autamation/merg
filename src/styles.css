@@ -1,0 +1,73 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'bootstrap/dist/css/bootstrap.css';
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+* {
+    padding: 0;
+    margin: 0;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.full-width{width: 100%;max-width: 500px;margin-bottom: 10px;font-size: larger;}
+.full-row {width: 100%;}
+h2 {
+    color:#002265;
+    font-weight: bold !important;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.pd-tp-10 {
+    padding-top: 10px;
+}
+
+.mg-lt-10 {
+    margin-left: 10px;
+}
+.mg-lt-20 {
+    margin-left: 20px;
+}
+
+.mg-tp-10{
+    margin-top: 10px;
+}
+
+.mg-tp-20{
+    margin-top: 20px;
+} 
+
+.mg-bt-0{
+    margin-bottom: 0 !important;
+}
+.mg-bt-10 {
+    margin-bottom: 10px;
+}
+
+.mg-bt-20 {
+    margin-bottom: 20px;
+}
+
+.mg-lt-0 {
+    margin-left: 0;
+} 
+
+.mg-rt-0 {
+    margin-right: 0;
+}
+
+.mg-rt-20 {
+    margin-right: 20px;
+}
+
+button.disabled:hover {
+    cursor:not-allowed !important;
+ }
+
+ .current-plan {
+    cursor: not-allowed !important;
+ }
+
+ .text-align-right {
+     text-align: right;
+ }

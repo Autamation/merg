@@ -1,0 +1,160 @@
+<div class="container">
+    <div class="title text-center">
+        <h2> {{loggedinUser$.value['name']}} - Profile </h2>
+    </div>
+    <div class="content">
+        <mat-tab-group>
+          
+            <mat-tab label="My Plans">
+              <div class="card mg-tp-20 mg-bt-20">
+                  <div class="card-header">
+                    {{loggedinUser$.value['userType']}}
+                    <!-- <a  style="margin-left: 10px;" class="badge badge-pill badge-secondary">Free</a>
+                    <a  style="margin-left: 10px;" class="badge badge-pill badge-primary">Pro</a> -->
+                  </div>
+                  <div class="card-body">
+                    <h3 class="card-title"><strong>You are currently enrolled for {{loggedinUser$.value['userType']}}</strong></h3>
+                    <p class="card-text">You can change you account to other plans. Please use below link to view plans</p>
+                    <a class="btn btn-success" routerLink="/plans">View Plans</a>
+                  </div>
+                </div>
+          </mat-tab>
+
+            <mat-tab label="Dashboard Home">
+              <div class="card mg-tp-20 mg-bt-20">
+                <div class="card-header">
+                  <h3 class="card-title mg-bt-0"><strong>Why do we use it?</strong></h3>
+                </div>
+                <div class="card-body">
+                  <p class="card-text">It is a long
+                    established fact that a reader will be distracted by the readable
+                    content of a page when looking at its layout. The point of using
+                    Lorem Ipsum is that it has a more-or-less normal distribution of
+                    letters, as opposed to using 'Content here, content here', making
+                    it look like readable English. Many desktop publishing packages and
+                    web page editors now use Lorem Ipsum as their default model text,
+                    and a search for 'lorem ipsum' will uncover many web sites still in
+                    their infancy. Various versions have evolved over the years,
+                    sometimes by accident, sometimes on purpose (injected humour and
+                    the like).</p>
+                </div>
+              </div>
+
+              <div class="card mg-tp-20 mg-bt-20">
+                <div class="card-header">
+                  <h3 class="card-title mg-bt-0"><strong>Where does it come from?</strong></h3>
+                </div>
+                <div class="card-body">
+                  <p class="card-text">Contrary to
+                    popular belief, Lorem Ipsum is not simply random text. It has roots
+                    in a piece of classical Latin literature from 45 BC, making it over
+                    2000 years old. Richard McClintock, a Latin professor at
+                    Hampden-Sydney College in Virginia, looked up one of the more
+                    obscure Latin words, consectetur, from a Lorem Ipsum passage, and
+                    going through the cites of the word in classical literature,
+                    discovered the undoubtable source. Lorem Ipsum comes from sections
+                    1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The
+                    Extremes of Good and Evil) by Cicero, written in 45 BC. This book
+                    is a treatise on the theory of ethics, very popular during the
+                    Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit
+                    amet..", comes from a line in section 1.10.32.</p>
+                </div>
+              </div>
+
+              <div class="card mg-tp-20 mg-bt-20">
+                <div class="card-header">
+                  <h3 class="card-title mg-bt-0"><strong>Where can I get some?</strong></h3>
+                </div>
+                <div class="card-body">
+                  <p class="card-text">Lorem Ipsum is
+                    simply dummy text of the printing and typesetting industry. Lorem
+                    Ipsum has been the industry's standard dummy text ever since the
+                    1500s, when an unknown printer took a galley of type and scrambled
+                    it to make a type specimen book. It has survived not only five
+                    centuries, but also the leap into electronic typesetting, remaining
+                    essentially unchanged. It was popularised in the 1960s with the
+                    release of Letraset sheets containing Lorem Ipsum passages, and
+                    more recently with desktop publishing software like Aldus PageMaker
+                    including versions of Lorem Ipsum.</p>
+                </div>
+              </div>
+
+              <div class="card mg-tp-20 mg-bt-20">
+                <div class="card-header">
+                  <h3 class="card-title mg-bt-0"><strong>Why do we use it?</strong></h3>
+                </div>
+                <div class="card-body">
+                  <p class="card-text">It is a long
+                    established fact that a reader will be distracted by the readable
+                    content of a page when looking at its layout. The point of using
+                    Lorem Ipsum is that it has a more-or-less normal distribution of
+                    letters, as opposed to using 'Content here, content here', making
+                    it look like readable English. Many desktop publishing packages and
+                    web page editors now use Lorem Ipsum as their default model text,
+                    and a search for 'lorem ipsum' will uncover many web sites still in
+                    their infancy. Various versions have evolved over the years,
+                    sometimes by accident, sometimes on purpose (injected humour and
+                    the like).</p>
+                </div>
+              </div>
+
+            </mat-tab>
+            <mat-tab label="Personal Details">
+                
+            </mat-tab>
+
+            <mat-tab label="Settings">
+                <div class="content full-width">
+                    <form [formGroup]="changePwdForm" >
+
+                        <mat-form-field class="full-width mg-tp-20">
+                            <mat-label> Current Password</mat-label>
+                            <input matInput type="password" formControlName="currentPassword" required />
+                            <mat-error *ngIf="isError(currentPassword) && currentPassword.errors.required">Current Password is required</mat-error>
+                            <mat-error *ngIf="isError(currentPassword) && currentPassword.errors.minlength">Current Password should be atleast 6 characters</mat-error>
+                            <mat-error *ngIf="isError(currentPassword) && currentPassword.errors.maxlength">Current Password should be maximum of 20 characters</mat-error>
+                          </mat-form-field>
+                    
+
+                        <mat-form-field class="full-width">
+                          <mat-label>New Password</mat-label>
+                          <input matInput type="password" formControlName="password" required />
+                          <mat-error *ngIf="isError(password) && password.errors.required">New Password is required</mat-error>
+                          <mat-error *ngIf="isError(password) && password.errors.minlength">New Password should be atleast 6 characters</mat-error>
+                          <mat-error *ngIf="isError(password) && password.errors.maxlength">New Password should be maximum of 20 characters</mat-error>
+                        </mat-form-field>
+                  
+                        <mat-form-field class="full-width">
+                          <mat-label>Confirm New Password</mat-label>
+                          <input matInput type="password" formControlName="passwordConfirm" required />
+                          <mat-error *ngIf="isError(passwordConfirm) && passwordConfirm.errors.required">Confirm New Password is required</mat-error>
+                          <mat-error *ngIf="isError(passwordConfirm) && passwordConfirm.errors.minlength">Confirm New Password should be atleast 6 characters</mat-error>
+                          <mat-error *ngIf="isError(passwordConfirm) && passwordConfirm.errors.maxlength">Confirm New Password should be maximum of 20 characters</mat-error>
+                        </mat-form-field>
+                          <mat-error *ngIf="!isError(password) && !isError(passwordConfirm) && changePwdForm.errors && changePwdForm.errors.passwordDoesNotMatch">New Password and Confirm New Password does not match</mat-error>
+                          <mat-error *ngIf="changePwdForm.errors && changePwdForm.errors.networkStatus">Password change not Complete, Your network status is offline</mat-error>
+                          <mat-error *ngIf="changePwdForm.errors && changePwdForm.errors.unknownError">Unknow error occured, Password change Failed</mat-error>
+                        <div class="row mg-rt-0">
+                          <div class="text-left col">
+                              <button mat-raised-button color="primary" type="submit" [disabled]="!changePwdForm.valid" >Upate Password</button>
+                          </div>           
+                        </div>
+                  
+                        <div class="mg-tp-20">
+                          <div *ngIf="error && error.networkStatus" class="alert alert-danger" role="alert">
+                            Network error occured. Could not complete the request.
+                          </div>
+                          <div *ngIf="error && error.errorCode500" class="alert alert-danger" role="alert">
+                              500 - Internal Server error occured. Could not complete the request.
+                          </div>
+                          <div *ngIf="error && error.unknownError" class="alert alert-danger" role="alert">
+                              Technical error occured. Could not complete the request.
+                          </div>
+                        </div>
+                  
+                      </form>
+                  </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

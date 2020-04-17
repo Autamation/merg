@@ -1,0 +1,114 @@
+<div class="container">
+    <div class="title text-center">
+        <h2 style="font-weight: bold;" >Accessibility Test Report</h2>
+      </div>
+    <div class="content">
+        <button type="button" (click)='goback()' class="btn btn-sm btn-warning">Back</button>
+    </div>
+    <div class="row">
+        <div class="col mg-bt-20">
+            <canvas baseChart
+            [data]="pieChartData"
+            [labels]="pieChartLabels"
+            [chartType]="pieChartType"
+            [colors] = "[{'backgroundColor' : ['rgb(211,33,45)','rgb(0,66,37)']}]">
+            </canvas>
+        </div>
+        <div class="col">
+            <div class="row mg-bt-20">
+                <div class="col mg-bt-20">
+
+                    <div class="input-group input-group-sm mb-3 mg-bt-10">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">Total Issues</div>
+                        </div>
+                        <input type="text" class="form-control text-align-right" [value]="summaryData['totalIssues']" disabled style="background:aliceblue;"/>
+                    </div>
+
+                    <div class="input-group input-group-sm mb-3 mg-bt-10">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">Total Errors</div>
+                        </div>
+                        <input type="text" class="form-control text-align-right" [value]="summaryData['totalErrors']" disabled style="background:aliceblue;"/>
+                    </div>
+
+                    <div class="input-group input-group-sm mb-3 mg-bt-10">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">Total Warnings</div>
+                        </div>
+                        <input type="text" class="form-control text-align-right" [value]="summaryData['totalWarnings']" disabled style="background:aliceblue;"/>
+                    </div>
+
+                    <div class="input-group input-group-sm mb-3 mg-bt-10">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">Total Tests</div>
+                        </div>
+                        <input type="text" class="form-control text-align-right" [value]="summaryData['totalNoOfTests']" disabled style="background: aliceblue;"/>
+                    </div>
+
+                    <div class="input-group input-group-sm mb-3 mg-bt-10">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">Failed Tests</div>
+                        </div>
+                        <input type="text" class="form-control text-align-right" [value]="summaryData['failedTests']" disabled style="background:aliceblue;"/>
+                    </div>
+
+                    <div class="input-group input-group-sm mb-3 mg-bt-10">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">Passed Tests</div>
+                        </div>
+                        <input type="text" class="form-control text-align-right" [value]="summaryData['passedTests']" disabled style="background:aliceblue;"/>
+                    </div>
+
+                </div>
+
+
+                <div class="col mg-bt-20">
+
+                    <div class="input-group input-group-sm mb-3 mg-bt-10">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">Count by Level A</div>
+                        </div>
+                        <input type="text" class="form-control text-align-right" [value]="summaryData['countBylevelA']" disabled style="background:aliceblue;"/>
+                    </div>
+
+                    <div class="input-group input-group-sm mb-3 mg-bt-10">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">Count by Level AA</div>
+                        </div>
+                        <input type="text" class="form-control text-align-right" [value]="summaryData['countBylevelAA']" disabled style="background:aliceblue;"/>
+                    </div>
+
+                    <div class="input-group input-group-sm mb-3 mg-bt-10">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">Count by Level AAA</div>
+                        </div>
+                        <input type="text" class="form-control text-align-right" [value]="summaryData['countBylevelAAA']" disabled style="background: aliceblue;"/>
+                    </div>
+
+                    <div class="input-group input-group-sm mb-3 mg-bt-10">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">% by Level A</div>
+                        </div>
+                        <input type="text" class="form-control text-align-right" [value]="summaryData['pctBylevelA']" disabled style="background:aliceblue;"/>
+                    </div>
+
+                    <div class="input-group input-group-sm mb-3 mg-bt-10">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">% by Level AA</div>
+                        </div>
+                        <input type="text" class="form-control text-align-right" [value]="summaryData['pctBylevelAA']" disabled style="background: aliceblue;"/>
+                    </div>
+
+                    <div class="input-group input-group-sm mb-3 mg-bt-10">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">% by Level AAA</div>
+                        </div>
+                        <input type="text" class="form-control text-align-right" [value]="summaryData['pctBylevelAAA']" disabled style="background: aliceblue;"/>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
